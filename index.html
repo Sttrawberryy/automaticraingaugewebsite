@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <style>
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #customers td,
+    #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    #customers tr:hover {
+      background-color: #ddd;
+    }
+
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #2510a3;
+      ;
+      color: white;
+
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page | Automatic Rain Gauge</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:300,400,700"
+    rel="stylesheet">
+
+  <!-- FIREBASE SDK WAJIBB!!!!!-->
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database-compat.js"></script>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-6 col-xs-12">
+          <nav>
+            <div id="menu-toggle">
+              <div class="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+              </div>
+              <div class="cross">
+                <span class="line"></span>
+                <span class="line"></span>
+              </div>
+            </div>
+            <ul class="main-nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a adding the target="_blank" href="biodata.html">Portfolio</a></li>
+              <li><a adding the target="_blank" href="biodata.html">About</a></li>
+              <li><a adding the target="_blank"
+                  href="https://instagram.com/pyyyyyuuuuuu?igshid=ZDc4ODBmNjlmNQ==">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="hero-text">
+            <h1><span>SKRIPSI</span><br>Ferri Ainurrofiki.</h1>
+            <h3>1941160100</h3>
+            <a href="biodata.html" class="btn btn-lg btn-primary">Know More</a>
+            <ul class="social-links">
+              <li class="label">Follow me Here!</li>
+              <li><a adding the target="_blank" href="https://instagram.com/pyyyyyuuuuuu?igshid=ZDc4ODBmNjlmNQ=="><img
+                    src="assets/instagram.png"></a></li>
+              <li><a adding the target="_blank" href="https://github.com/Sttrawberryy"><img src="assets/github.png"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="case-study">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="sub-heading">MONITORING</h4>
+          <h1 class="heading purple"><br>Automatic Rain Gauge</h1>
+          <!-- Swiper -->
+          <div class="swiper-container client-swiper">
+            <div class="swiper-wrapper">
+            </div>
+            <!-- Tabel disini-->
+            <table>
+              <table border="3">
+                <thead>
+                  <tr>
+                    <th> Waktu</th>
+                    <th> Curah Hujan </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div id="root"></div>
+                      <script>
+                        var firebaseConfig = {
+                          apiKey: "AIzaSyB027qxEV6avxU_KOqiXANX9XODE0Twj5s",
+                          authDomain: "datalogger-arg-be6a6.firebaseapp.com",
+                          databaseURL: "https://datalogger-arg-be6a6-default-rtdb.firebaseio.com",
+                          projectId: "datalogger-arg-be6a6",
+                          storageBucket: "datalogger-arg-be6a6.appspot.com",
+                          messagingSenderId: "491221540383",
+                          appId: "1:491221540383:web:f6002acbd1eba74ffbff2a",
+                          measurementId: "G-89KMF1SJ17"
+                        };
+                        firebase.initializeApp(firebaseConfig);
+                        var firebaseRef = firebase.database().ref("waktu_arg").child("waktu");
+                        firebaseRef.on("value", function (snapshot) {
+                          var data = snapshot.val();
+                          snapshot.forEach(function (element) {
+                            document.querySelector('#root').innerHTML += `
+                                    <div>${element.val()}</div>
+                                    `
+                          });
+                        }) 
+                      </script>
+                    </td>
+                    <td>
+                      <div id="root1"></div>
+                      <script>
+                        var firebaseConfig = {
+                          apiKey: "AIzaSyB027qxEV6avxU_KOqiXANX9XODE0Twj5s",
+                          authDomain: "datalogger-arg-be6a6.firebaseapp.com",
+                          databaseURL: "https://datalogger-arg-be6a6-default-rtdb.firebaseio.com",
+                          projectId: "datalogger-arg-be6a6",
+                          storageBucket: "datalogger-arg-be6a6.appspot.com",
+                          messagingSenderId: "491221540383",
+                          appId: "1:491221540383:web:f6002acbd1eba74ffbff2a",
+                          measurementId: "G-89KMF1SJ17"
+                        };
+                        firebase.initializeApp(firebaseConfig);
+                        var firebaseRef = firebase.database().ref("data_arg").child("data_arg");
+                        firebaseRef.on("value", function (snapshot) {
+                          var data = snapshot.val();
+                          snapshot.forEach(function (element) {
+                            document.querySelector('#root1').innerHTML += `
+                                    <div>${element.val()}</div>
+                                    `
+                          });
+                        }) 
+                      </script>
+                    </td>
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="heading purple"><br>KETERANGAN</h1>
+          <h2> Probabilistik Curah Hujan 24 Jam </h2>
+          <table border="2">
+            <tr>
+              <th> Intensitas (mm) </th>
+              <th> Status </th>
+            </tr>
+            <tr>
+              <td> Kosong / 0mm </td>
+              <td> Berawan / Tidak Hujan </td>
+            </tr>
+            <tr>
+              <td> 0.5 - 20mm </td>
+              <td> Hujan Ringan </td>
+            </tr>
+            <tr>
+              <td> 20 - 50mm </td>
+              <td> Hujan Sedang </td>
+            </tr>
+            <tr>
+              <td> 50 - 100mm </td>
+              <td> Hujan Lebat </td>
+            </tr>
+            <tr>
+              <td> 100 - 150mm </td>
+              <td> Hujan Sangat Lebat </td>
+            </tr>
+            <tr>
+              <td> >150mm </td>
+              <td> Hujan Esktrem Berpotensi Banjir </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonial">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h4 class="sub-heading">SKRIPSI</h4>
+          <h1 class="heading pink"> FERRI AINURROFIKI <br>1941160100</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Swiper -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Banner -->
+  <section class="contact-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1>Apa itu Automatic Rain Gague?</h1>
+          <a adding the target="_blank"
+            href="https://iklim.sumsel.bmkg.go.id/automatic-rain-gauge-arg/#:~:text=Automatic%20Rain%20Gauge%20(ARG)%20atau,menggunakan%20baterai%20sebagai%20sumber%20tenaganya."
+            class="btn btn-lg btn-primary">Mari Kita Cari Tahu!</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container-fluid">
+      <div class="row footer">
+        <div class="col-md-12 text-center">
+          <h1><br><span>POLITEKNIK NEGERI MALANG</span></h1>
+          <ul class="social-links">
+            <li><a adding the target="_blank" href="https://instagram.com/pyyyyyuuuuuu?igshid=ZDc4ODBmNjlmNQ=="><img
+                  src="assets/instagram.png"></a></li>
+            <li><a adding the target="_blank" href="https://github.com/Sttrawberryy"><img src="assets/github.png"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Some Javascript -->
+  <script src="js/jquery-2.1.1.js"></script>
+  <script src="js/swiper.jquery.min.js"></script>
+  <!-- Initialize Client Swiper -->
+  <script>
+    var swiper1 = new Swiper('.client-swiper', {
+      slidesPerView: 3,
+      paginationClickable: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      spaceBetween: 60,
+      // Responsive breakpoints
+      breakpoints: {
+        // when window width is <= 320px
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          pagination: '.swiper-pagination'
+        },
+        // when window width is <= 480px
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 20
+        },
+        // when window width is <= 640px
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 30
+        }
+      }
+    });
+    // Initialize Testimonial Swiper
+    var swiper2 = new Swiper('.testimonial-swiper', {
+      slidesPerView: 3,
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      spaceBetween: 30,
+      grabCursor: true,
+      freeMode: true,
+      breakpoints: {
+        // when window width is <= 320px
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        // when window width is <= 480px
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 10
+        },
+        // when window width is <= 640px
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 10
+        }
+      }
+    });
+  </script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+  <script src="js/jquery.counterup.min.js"></script>
+  <script>
+    // Counterup
+    $('.counter').counterUp({
+      time: 1000
+    });
+
+    // Main Navigation
+    $('#menu-toggle').click(function () {
+      $(this).toggleClass('open'),
+        $('.main-nav').toggleClass('show-it');
+    })
+  </script>
+
+  <!-- Google Analytics - You should remove this -->
+  <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-29231762-2', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</body>
+
+</html>
